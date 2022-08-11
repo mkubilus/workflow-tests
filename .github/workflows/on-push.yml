@@ -1,0 +1,14 @@
+name: Deploy Terraform
+on: 
+  push:
+    branches:
+      - main
+
+
+jobs:
+  test-merge:
+    steps:
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(context)

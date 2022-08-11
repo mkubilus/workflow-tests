@@ -6,8 +6,9 @@ on:
       - main
   workflow_dispatch:
     inputs:
-      type: environment
-      required: true
+      environment:
+        type: environment
+        required: true
 
 jobs:
   test-merge:

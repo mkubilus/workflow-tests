@@ -7,6 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       type: environment
+      required: true
 
 jobs:
   test-merge:

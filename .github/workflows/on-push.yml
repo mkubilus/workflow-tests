@@ -31,9 +31,10 @@ jobs:
 
       - name: Stuff 
         run: |
-          echo "${{ github.event.head_commit.message }}"
-          echo ${{ github.event.head_commit.message }}
-          echo -n "${{ github.event.head_commit.message }}"
+          echo "${{toJSON(github.event)}}"
+          #echo "${{ github.event.head_commit.message }}"
+          #echo ${{ github.event.head_commit.message }}
+          #echo -n "${{ github.event.head_commit.message }}"
 
       - name: Guess PR
         run: |

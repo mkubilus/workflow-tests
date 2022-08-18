@@ -31,7 +31,7 @@ jobs:
 
       - name: Stuff 
         run: |
-          echo "${{toJSON(github.event)}}"
+          echo "${{toJSON(github.event.head_commit)}}" | jq '.message')"
           #echo "${{ github.event.head_commit.message }}"
           #echo ${{ github.event.head_commit.message }}
           #echo -n "${{ github.event.head_commit.message }}"

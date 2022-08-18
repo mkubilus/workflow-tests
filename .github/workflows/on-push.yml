@@ -1,6 +1,6 @@
 name: Deploy Terraform
 on: 
-  pull_request:
+#  pull_request:
   push:
     branches:
       - main
@@ -12,6 +12,11 @@ on:
 
 jobs:
   test-merge:
+
+    environment:
+      name: atest
+
+
     runs-on: ubuntu-latest
     steps:
       - name: View context attributes

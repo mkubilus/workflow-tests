@@ -29,12 +29,17 @@ jobs:
         with:
           script: console.log(github.issue)
 
-#      - uses: actions/github-script@v6
-#        with:
-#          script: |
-#            github.rest.issues.createComment({
-#              issue_number: context.issue.number,
-#              owner: context.repo.owner,
-#              repo: context.repo.repo,
-#              body: '👋 Thanks for reporting!'
-#            })
+      - name: Guess PR
+        run:
+          echo "PRNUM=$(echo ${{ github.event.push.head_commit.message }} | sed 's/.*#\([0-9]*\).*/\1/g')" >> $GITHUB_ENV
+
+    
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: ${{ env.PRNUM }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })

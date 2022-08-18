@@ -1,0 +1,28 @@
+name: Close PR 
+on: 
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  test-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(context)
+
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(context.repo)
+
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(github)
+
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(github.event)

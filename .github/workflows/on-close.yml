@@ -2,6 +2,7 @@ name: Close PR
 on: 
   pull_request:
     types: [ closed ]
+    branches: [ main ]
 
 jobs:
   test-merge:
@@ -29,11 +30,11 @@ jobs:
 
   merge_job:
     # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true 
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo PR #${{ github.event.number }} has been merged
+        echo PR #${{ github.event.number }} has been merged to ${{ github.head_ref }}
 
   close_job:
     # this job will only run if the PR has been closed without being merged

@@ -31,7 +31,8 @@ jobs:
 
       - name: Guess PR
         run: |
-          echo "PRNUM=$( echo '${{toJSON(github.event.head_commit)}}' | jq '.message' | sed 's/.*#\([0-9]*\).*/\1/g' )" >> $GITHUB_ENV
+          export PR=$( echo '${{toJSON(github.event.head_commit)}}' | jq '.message' | sed 's/.*#\([0-9]*\).*/\1/g' )
+          echo "PRNUM=${PR}" >> $GITHUB_ENV
 
       - uses: actions/github-script@v6
         with:
@@ -42,4 +43,4 @@ jobs:
               repo: context.repo.repo,
               body: '👋 Thanks for reporting!'
             })
-        if: ${{ env.PRNUM != '' }}
+        if: ${{ env.PRNUM != 'null' }}

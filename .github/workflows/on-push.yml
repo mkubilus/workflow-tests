@@ -31,7 +31,7 @@ jobs:
 
       - name: Guess PR
         run:
-          echo "PRNUM=$(echo ${{ github.event.push.head_commit.message }} | sed 's/.*#\([0-9]*\).*/\1/g')" >> $GITHUB_ENV
+          echo "PRNUM=$(echo ${{ github.event.head_commit.message }} | sed 's/.*#\([0-9]*\).*/\1/g')" >> $GITHUB_ENV
 
     
       - uses: actions/github-script@v6

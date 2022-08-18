@@ -31,8 +31,7 @@ jobs:
 
       - name: Stuff 
         run: |
-          echo '${{toJSON(github.event.head_commit)}}' | jq '.message'
-          echo '${{ github.event.head_commit.message }}' | sed 's/.*#\([0-9]*\).*/\1/g'
+          echo '${{toJSON(github.event.head_commit)}}' | jq '.message' | sed 's/.*#\([0-9]*\).*/\1/g'
 
       - name: Guess PR
         run: |

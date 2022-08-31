@@ -47,6 +47,6 @@ jobs:
               issue_number: ${{ env.PRNUM }},
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
+              body: '👋 PUSH detected from PR ${{ env.PRNUM }}!'
             })
         if: ${{ env.PRNUM != 'null' }}

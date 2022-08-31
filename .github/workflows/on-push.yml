@@ -37,7 +37,7 @@ jobs:
 
       - name: Guess PR
         run: |
-          export PR=$( echo ${{ toJSON(github.event.head_commit.message) }} | sed 's/.*#\([0-9]*\).*/\1/g' )
+          export PR=$( echo ${{ toJSON(github.event.head_commit.message) }} | awk 'match($0, /#[0-9]+/) { print substr($0, RSTART+1, RLENGTH-1) }' )
           echo "PRNUM=${PR}" >> $GITHUB_ENV
 
       - uses: actions/github-script@v6

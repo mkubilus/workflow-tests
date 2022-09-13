@@ -28,7 +28,12 @@ jobs:
         with:
           script: console.log( "${{ github.event }}" )
 
-  
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(github.event.pull_request.base)
+
+
   merge_job1:
 
     # this job will only run if the PR has been merged

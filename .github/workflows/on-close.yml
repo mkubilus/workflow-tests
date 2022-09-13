@@ -40,7 +40,6 @@ jobs:
 
 
   merge_job1:
-
     concurrency:
       group: mergetest1
 

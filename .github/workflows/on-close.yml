@@ -2,7 +2,7 @@ name: Close PR
 on: 
   pull_request:
     types: [ closed ]
-    branches: [ main ]
+#    branches: [ main ]
 
 jobs:
   test-merge:
@@ -28,7 +28,17 @@ jobs:
         with:
           script: console.log( "${{ github.event }}" )
 
-  
+      - name: get refs
+        run: |
+          echo "Baseref: ${{ github.base_ref }}"
+          echo "Headref: ${{ github.head_ref }}"
+
+      - name: View context attributes
+        uses: actions/github-script@v6
+        with:
+          script: console.log(github.base_ref)
+
+
   merge_job1:
 
     # this job will only run if the PR has been merged
@@ -57,7 +67,8 @@ jobs:
       - merge_job1
 
     # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true 
+    #if: ${{ github.event.pull_request.merged == true && github.event.pull_request.base.ref == "main" }}
+    if: ${{ github.event.pull_request.merged == true && github.base_ref == "main" }}
     runs-on: ubuntu-latest
     steps:
       - run: |

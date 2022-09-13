@@ -28,10 +28,15 @@ jobs:
         with:
           script: console.log( "${{ github.event }}" )
 
+      - name: get refs
+        run: |
+          echo "Baseref: ${{ github.base_ref }}"
+          echo "Headref: ${{ github.head_ref }}"
+
       - name: View context attributes
         uses: actions/github-script@v6
         with:
-          script: console.log(github.event.pull_request.base)
+          script: console.log(github.base_ref)
 
 
   merge_job1:

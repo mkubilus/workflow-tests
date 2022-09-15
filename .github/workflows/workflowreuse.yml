@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         target: [a,b,c]
-    uses: .github/workflows/on-close.yml
+    uses: .github/workflows/on-close.yml@main
     secrets: inherit
     with:
       target: ${{ matrix.target }}

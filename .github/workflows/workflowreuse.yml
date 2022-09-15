@@ -1,0 +1,13 @@
+name: Test Workflow Reuse
+on:
+  pull_request:
+
+jobs:
+  workflow_reuse_matrix:
+    strategy:
+      matrix:
+        target: [a,b,c]
+    uses: ./.github/workflows/on-close.yml
+    secrets: inherit
+    with:
+      target: ${{ matrix.target }}

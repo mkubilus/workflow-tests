@@ -8,7 +8,7 @@ on:
       target:
         type: string
 
-concurrency: ${{ input.target }}
+concurrency: ${{ inputs.target }}
 
 jobs:
   test-merge:

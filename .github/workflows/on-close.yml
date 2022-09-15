@@ -3,6 +3,12 @@ on:
   pull_request:
     types: [ closed ]
 #    branches: [ main ]
+  workflow_call:
+    inputs:
+      target:
+        type: string
+
+concurrency: foo1
 
 jobs:
   test-merge:
